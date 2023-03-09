@@ -40,14 +40,14 @@ function getApp(){
     }
   if(currentApp != 5)
     {
-      document.getElementById('vids').style.display = 'none';
+      //document.getElementById('vids').style.display = 'none';
       document.getElementById('rTop').style.display = 'block';
       document.getElementById('rMiddle').style.display = 'block';
       document.getElementById('rBottom').style.display = 'block';
     }
   else
     {
-      document.getElementById('vids').style.display = 'block';
+      //document.getElementById('vids').style.display = 'block';
       document.getElementById('rTop').style.display = 'none';
       document.getElementById('rMiddle').style.display = 'none';
       document.getElementById('rBottom').style.display = 'none';
