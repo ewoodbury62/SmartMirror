@@ -38,7 +38,7 @@ function getApp(){
     {
       getWeather();
     }
-  /*if(currentApp != 5)
+  if(currentApp != 5)
     {
       document.getElementById('vids').style.display = 'none';
       document.getElementById('rTop').style.display = 'block';
@@ -51,7 +51,7 @@ function getApp(){
       document.getElementById('rTop').style.display = 'none';
       document.getElementById('rMiddle').style.display = 'none';
       document.getElementById('rBottom').style.display = 'none';
-    }*/
+    }
 }
 
 function getWeather(){
