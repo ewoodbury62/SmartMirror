@@ -7,6 +7,16 @@
 * 
 ************************************************************************/
 
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var recognition = new SpeechRecognition();
+recognition.continuous = false;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+var diagnostic = document.querySelector('.output');
+var bg = document.querySelector('html');
+var hints = document.querySelector('.hints');
+
 // 0 = Time, 1 = weather, 2 = qotd, 3 = camera, 
 var currentApp = 0;
 let timezone;
@@ -28,13 +38,26 @@ function getApp(){
     {
       getWeather();
     }
+  if(currentApp != 5)
+    {
+      document.getElementById('vids').style.display = 'none';
+      document.getElementById('rTop').style.display = 'block';
+      document.getElementById('rMiddle').style.display = 'block';
+      document.getElementById('rBottom').style.display = 'block';
+    }
+  else
+    {
+      document.getElementById('vids').style.display = 'block';
+      document.getElementById('rTop').style.display = 'none';
+      document.getElementById('rMiddle').style.display = 'none';
+      document.getElementById('rBottom').style.display = 'none';
+    }
 }
 
 function getWeather(){
   document.getElementById("tString").innerHTML = "Day";
   document.getElementById("mString").innerHTML = "32 F";
   document.getElementById("bString").innerHTML = "Location?";
-
   document.getElementById('bButton1').style.visibility = 'hidden';
   document.getElementById('bButton2').style.visibility = 'hidden';
   document.getElementById('bButton3').style.visibility = 'hidden';
@@ -251,6 +274,44 @@ function eTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+function voiceClick()
+{
+  currentApp = 4;
+  document.getElementById("tString").innerHTML = "";
+  document.getElementById("bString").innerHTML = "";
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+  document.getElementById("mString").innerHTML = "Choose App!";
+  recognition.start();
+}
+
+recognition.onresult = function(event) {
+  var result = event.results[0][0].transcript;
+  document.getElementById("mString").innerHTML = 'Result received: ' + result + '.';
+  if(result == "time")
+    {setTimeout(function(){ 
+
+        timeClick();;
+    }, 1000);
+   }
+  else if(result == "weather")
+    {setTimeout(function(){ 
+
+        weatherClick();;
+    }, 1000);
+   }
+  else if(result == "daily quote" || result == "quote of the day")
+    {setTimeout(function(){ 
+
+        QOTDClick();;
+    }, 1000);
+   }
+}
+
 function timeClick()
 {
   currentApp = 0;
@@ -267,22 +328,23 @@ function QOTDClick()
   const dqDate = new Date();
   var dQ = dqDate.getDay();
   document.getElementById("tString").innerHTML = "";
-  document.getElementById("bString").innerHTML = "";
   if(dQ == 0)
     {
       document.getElementById("mString").innerHTML = "Quote 1";
     }
   else if(dQ == 1)
     {
-      document.getElementById("mString").innerHTML = "Quote 2";
+      document.getElementById("mString").innerHTML = "“I’d rather regret the things I’ve done than regret the things I haven’t done.”";
+      document.getElementById("bString").innerHTML = "—Lucille Ball";
     }
   else if(dQ == 2)
     {
-      document.getElementById("mString").innerHTML = "Quote 3";
+      document.getElementById("mString").innerHTML = "“Opportunities don't happen, you create them.” — Chris Grosser";
     }
   else if(dQ == 3)
     {
-      document.getElementById("mString").innerHTML = "Quote 4";
+      document.getElementById("mString").innerHTML = "“Either you run the day or the day runs you.”";
+      document.getElementById("bString").innerHTML = "—Jim Rohn";
     }
   else if(dQ == 4)
     {
@@ -290,18 +352,30 @@ function QOTDClick()
     }
   else if(dQ == 5)
     {
-      document.getElementById("mString").innerHTML = "Quote 6";
+      document.getElementById("mString").innerHTML = "“Friday sees more smiles than any other day of the workweek!”—Kate Summers";
     }
   else if(dQ == 6)
     {
       document.getElementById("mString").innerHTML = "Quote 7";
     }
-
-
   document.getElementById('bButton1').style.visibility = 'hidden';
   document.getElementById('bButton2').style.visibility = 'hidden';
   document.getElementById('bButton3').style.visibility = 'hidden';
   document.getElementById('bButton4').style.visibility = 'hidden';
   document.getElementById('bButton5').style.visibility = 'hidden';
   document.getElementById('bButton6').style.visibility = 'hidden';
+}
+
+function tubeClick()
+{
+  currentApp = 5;
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+  //document.getElementById("mString").innerHTML = '';
+  //document.getElementById("tString").innerHTML = '';
+  //document.getElementById("bString").innerHTML = '';
 }
