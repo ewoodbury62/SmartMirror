@@ -1,47 +1,50 @@
 <body>
   <link rel="stylesheet" type="text/css" href="wrap.css" />
-  <div class="float-container">
-    <div class="float-child">
-      <div class = "homePage" id = "homePage" style="float:left;">
-        <h1 id="SmartMirror" class="SmartMirror" style="display: flex;justify-content: space-around;">
-          Smart Mirror
-        </h1>
-        <p>
-          <button>Time</button>
-          <button>Weather</buttonon>
-          <button>Daily Quote</button>
-          <button>Camera</button>
-        </p>
-        <p>
-          <button>Voice Activation</button>
-          <button>LED Control</button>
-          <button>YouTube Tutorials</button>
-        </p>
-      </div>
-    </div>
-    <div class = "float-child">
-      <div class = "app" id = "app" style="margin:10px;">
-        <div class = "rTop" id="rTop">
-          <h1 id="tString"></h1>
-        </div>
+  <div class="flex-container">
 
-        <div class="rMiddle" id="rMiddle">
-          <h1 id="mString"></h1>
-        </div>
-        <div class = "rBottom" id = "rBottom">
-          <h1 id="bString"></h1>
-        </div>
-        <div class = "bButtons" style="display:flex;align-items:center;justify-content:space-around;">
-          <p>
-          <button id="bButton1">Hawaii-Aleutian Standard Time</button>
-          <button id="bButton2">Alaska Standard Time</button>
-          <button id="bButton3">Pacific Standard Time</button>
-          <button id="bButton4">Mountain Standard Time</button>
-          <button id="bButton5">Central Standard Time</button>
-          <button id="bButton6">Eastern Standard Time</button>
-          </p>
-        </div>
-      </div>
-    </div>
+  <div class="flex-child-left">
+    
+    <h1 class="smart-mirror">Smart Mirror</h1>
+    
+    <p class="hpButtons">
+      <button>Time</button>
+      <button>Weather</button>
+      <button>Daily Quote</button>
+      <button>Camera</button>
+    </p>
+    <p class="hpButtons">
+      <button>LED Control</button>
+      <button>YouTube Tutorials</button>
+      <button>Voice Activation</button>
+      <button>Button</button>
+    </p>
+    
   </div>
+    
+  <div class="flex-child-right">
+    
+    <div class="tString" id="tString">
+      <h1>Top String</h1>
+    </div>
+    <div id="mString" id="mString">
+      <h1>Middle String</h1>
+    </div>
+    <div class="bString" ="bString">
+      <h1>Bottom String</h1>
+    </div>
+    
+    <div class="rButtons">
+      <p>
+        <button>Hawaii</button>
+        <button>Alaska</button>
+        <button>Pacific</button>
+        <button>Mountain</button>
+        <button>Central</button>
+        <button>Eastern</button>
+      </p>
+    </div>
+    
+  </div>
+  
+</div>
 </body>
