@@ -18,7 +18,7 @@ var bg = document.querySelector('html');
 var hints = document.querySelector('.hints');
 */
 // 0 = Time, 1 = weather, 2 = qotd, 3 = camera, 
-var currentApp = 0;
+var currentApp = 9;
 let timezone;
 let timezoneWord;
 const firstdate = new Date();
