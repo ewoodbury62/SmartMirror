@@ -19,6 +19,7 @@ body{
 .smart-mirror{
     display:flex;
     justify-content:space-around;
+  font-size:75px;
 }
 
 .hpButtons button{
@@ -52,7 +53,7 @@ body{
 }
 
 #mString h1{
-  font-size:150px;
+  font-size:200px;
   display:flex;
   justify-content:space-around;
 }
@@ -63,7 +64,17 @@ body{
   justify-content:space-around;
 }
 
+
 .rButtons{
-  display:flex;
-  justify-content:space-around;
+  position: absolute;
+  bottom: 0px;
+  left: 2000px;
+}
+
+.rButtons button{
+  background-color: white;
+  border: 1px solid gray;
+  height: 50px;
+  margin-left:30px;
+  font-size: 40px;
 }
