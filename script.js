@@ -25,18 +25,9 @@ const firstdate = new Date();
 const firsttimezone = firstdate.getTimezoneOffset();
 timezone = firstdate.getTimezoneOffset();
 timezoneWord = getTimezone(timezone);
+document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 
 setInterval(getApp, 100); // Runs every 1/10th second
-
-function timeClick()
-{
-  currentApp = 0;
-}
-
-function weatherClick()
-{
-  currentApp = 1;
-}
 
 function getApp(){
   if(currentApp == 0)
@@ -47,10 +38,24 @@ function getApp(){
     {
       getWeather();
     }
+  if(currentApp != 5)
+    {
+      document.getElementById('vids').style.display = 'none';
+      document.getElementById('rTop').style.display = 'block';
+      document.getElementById('rMiddle').style.display = 'block';
+      document.getElementById('rBottom').style.display = 'block';
+    }
+  else
+    {
+      document.getElementById('vids').style.display = 'block';
+      document.getElementById('rTop').style.display = 'none';
+      document.getElementById('rMiddle').style.display = 'none';
+      document.getElementById('rBottom').style.display = 'none';
+    }
 }
 
 function getWeather(){
-  document.getElementById("tStringh").innerHTML = "Day";
+  document.getElementById("tString").innerHTML = "Day";
   document.getElementById("mString").innerHTML = "32 F";
   document.getElementById("bString").innerHTML = "Location?";
   document.getElementById('bButton1').style.visibility = 'hidden';
@@ -99,23 +104,23 @@ function getDateAndTime(){
   var monthWord = getMonth(month);
   if(minute < 10 && second < 10)
   {
-      document.getElementById("mStringh").innerHTML = hour + ":0" + minute + ":0" + second;
+      document.getElementById("mString").innerHTML = hour + ":0" + minute + ":0" + second;
   }
   else if(minute < 10)
   {
-    document.getElementById("mStringh").innerHTML = hour + ":0" + minute + ":" + second;  
+    document.getElementById("mString").innerHTML = hour + ":0" + minute + ":" + second;  
   }
   else if(second < 10)
   {
-      document.getElementById("mStringh").innerHTML = hour + ":" + minute + ":0" + second;
+      document.getElementById("mString").innerHTML = hour + ":" + minute + ":0" + second;
   }
   else
   {
-    document.getElementById("mStringh").innerHTML = hour + ":" + minute + ":" + second;
+    document.getElementById("mString").innerHTML = hour + ":" + minute + ":" + second;
   }
-  document.getElementById("tStringh").innerHTML = dayOfWeek + ", " + monthWord + " " + day + " " + year;
+  document.getElementById("tString").innerHTML = dayOfWeek + ", " + monthWord + " " + day + " " + year;
   timezoneWord = getTimezone(timezone);
-  document.getElementById("bStringh").innerHTML ="Timezone: " + timezoneWord;
+  document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
   document.getElementById('bButton1').style.visibility = 'visible';
   document.getElementById('bButton2').style.visibility = 'visible';
   document.getElementById('bButton3').style.visibility = 'visible';
@@ -267,4 +272,114 @@ function eTime()
   }
   timezoneWord = getTimezone(timezone);
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
+}
+
+function voiceClick()
+{
+  currentApp = 4;
+  document.getElementById("tString").innerHTML = "";
+  document.getElementById("bString").innerHTML = "";
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+  document.getElementById("mString").innerHTML = "Choose App!";
+  recognition.start();
+}
+
+recognition.onresult = function(event) {
+  var result = event.results[0][0].transcript;
+  document.getElementById("mString").innerHTML = 'Result received: ' + result + '.';
+  if(result == "time")
+    {setTimeout(function(){ 
+
+        timeClick();;
+    }, 1000);
+   }
+  else if(result == "weather")
+    {setTimeout(function(){ 
+
+        weatherClick();;
+    }, 1000);
+   }
+  else if(result == "daily quote" || result == "quote of the day")
+    {setTimeout(function(){ 
+
+        QOTDClick();;
+    }, 1000);
+   }
+}
+
+function timeClick()
+{
+  currentApp = 0;
+}
+
+function weatherClick()
+{
+  currentApp = 1;
+}
+
+function QOTDClick()
+{
+  currentApp = 2;
+  const dqDate = new Date();
+  var dQ = dqDate.getDay();
+  document.getElementById("tString").innerHTML = "";
+  if(dQ == 0)
+    {
+      document.getElementById("mString").innerHTML = "Quote 1";
+    }
+  else if(dQ == 1)
+    {
+      document.getElementById("mString").innerHTML = "“I’d rather regret the things I’ve done than regret the things I haven’t done.”";
+      document.getElementById("bString").innerHTML = "— Lucille Ball";
+    }
+  else if(dQ == 2)
+    {
+      document.getElementById("mString").innerHTML = "“Opportunities don't happen, you create them.”";
+      document.getElementById("bString").innerHTML = "— Chris Grosserv";
+    }
+  else if(dQ == 3)
+    {
+      document.getElementById("mString").innerHTML = "“Either you run the day or the day runs you.”";
+      document.getElementById("bString").innerHTML = "— Jim Rohn";
+    }
+  else if(dQ == 4)
+    {
+      document.getElementById("mString").innerHTML = "Quote 5";
+      document.getElementById("bString").innerHTML = "— Jim Rohn";
+    }
+  else if(dQ == 5)
+    {
+      document.getElementById("mString").innerHTML = "“Friday sees more smiles than any other day of the workweek!”";
+      document.getElementById("bString").innerHTML = "— Kate Summers";
+    }
+  else if(dQ == 6)
+    {
+      document.getElementById("mString").innerHTML = "Quote 7";
+      document.getElementById("bString").innerHTML = "—Jim Rohn";
+    }
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+}
+
+function tubeClick()
+{
+  currentApp = 5;
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+  //document.getElementById("mString").innerHTML = '';
+  //document.getElementById("tString").innerHTML = '';
+  //document.getElementById("bString").innerHTML = '';
 }
