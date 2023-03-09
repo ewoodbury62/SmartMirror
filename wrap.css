@@ -1,47 +1,27 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body{
-  height: 100vh;
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 
-
-
-.float-child {
-    width: 50%;
-    float: left;
-    padding: 20px;
-} 
-
-#rBottom h1{
-  height: 30vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.flex-container {
+    display: flex;
 }
 
-#rTop h1{
-  display: grid;
-  height: 20vh;
-  align-items: center;
-  justify-content: space-around;
+.flex-child-left {
+    flex: 1;
+}  
+
+.flex-child-right {
+    flex: 1;
+}  
+
+.smart-mirror{
+    display:flex;
+    justify-content:space-around;
 }
 
-#rMiddle h1{
-  display: grid;
-  height: 30vh;
-  align-items: center;
-  justify-content: space-around;
-  font-size:150px;
-}
-
-#homePage button{
+.hpButtons button{
   background-color: white;
   border: 1px solid gray;
   width: 400px;
@@ -50,6 +30,40 @@ body{
   font-size: 60px;
 }
 
-.SmartMirror{
-  font-size: 60px;
+.tString{
+    display:flex;
+    justify-content:space-around;
+}
+
+.mString{
+    display:flex;
+    justify-content:space-around;
+}
+
+.bString{
+    display:flex;
+    justify-content:space-around;
+}
+
+#tString h1{
+  font-size:100px;
+  display:flex;
+  justify-content:space-around;
+}
+
+#mString h1{
+  font-size:150px;
+  display:flex;
+  justify-content:space-around;
+}
+
+#bString h1{
+  font-size:100px;
+  display:flex;
+  justify-content:space-around;
+}
+
+.rButtons{
+  display:flex;
+  justify-content:space-around;
 }
