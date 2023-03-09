@@ -7,7 +7,7 @@
 * 
 ************************************************************************/
 
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+/*var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var recognition = new SpeechRecognition();
 recognition.continuous = false;
 recognition.lang = 'en-US';
@@ -16,7 +16,7 @@ recognition.maxAlternatives = 1;
 var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 var hints = document.querySelector('.hints');
-
+*/
 // 0 = Time, 1 = weather, 2 = qotd, 3 = camera, 
 var currentApp = 0;
 let timezone;
@@ -286,10 +286,10 @@ function voiceClick()
   document.getElementById('bButton5').style.visibility = 'hidden';
   document.getElementById('bButton6').style.visibility = 'hidden';
   document.getElementById("mString").innerHTML = "Choose App!";
-  recognition.start();
+  //recognition.start();
 }
 
-recognition.onresult = function(event) {
+/*recognition.onresult = function(event) {
   var result = event.results[0][0].transcript;
   document.getElementById("mString").innerHTML = 'Result received: ' + result + '.';
   if(result == "time")
@@ -310,7 +310,7 @@ recognition.onresult = function(event) {
         QOTDClick();;
     }, 1000);
    }
-}
+}*/
 
 function timeClick()
 {
