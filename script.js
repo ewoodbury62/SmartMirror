@@ -7,6 +7,7 @@
 * 
 ************************************************************************/
 
+// Speech Recognition variables
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var recognition = new SpeechRecognition();
 recognition.continuous = false;
@@ -17,43 +18,65 @@ var diagnostic = document.querySelector('.output');
 var bg = document.querySelector('html');
 var hints = document.querySelector('.hints');
 
-// 0 = Time, 1 = weather, 2 = qotd, 3 = camera, 
-var currentApp = 0;
-let timezone;
-let timezoneWord;
-const firstdate = new Date();
-const firsttimezone = firstdate.getTimezoneOffset();
-timezone = firstdate.getTimezoneOffset();
-timezoneWord = getTimezone(timezone);
-document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
+//First setup variables
+var currentApp = 0;                                                                  // Default App is time -- Maybe do a homescreen?
+var currentVid = 0;                                                                  // Current tutorial is off
+let timezone;                                                                         // Timezone for time as offset variable (minutes)
+let timezoneWord;                                                                     // Timezone as a word
+const firstdate = new Date();                                                          // Initial time 
+const firsttimezone = firstdate.getTimezoneOffset();                                  // Initial timezone
+timezone = firstdate.getTimezoneOffset() + 60;                                        // Adds 60 to counter daylight savings
+timezoneWord = getTimezone(timezone);                                                 // Timezone for time app
+document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;            // Puts first timezone down -- Check if actually needed?
 
-setInterval(getApp, 100); // Runs every 1/10th second
+// Runs the whole program every x milliseconds - current = 1/10th of a second
+setInterval(getApp, 100); 
 
+// Gets the current app - mainly used for updating time and weather
+// Also helps display proper youtube video
 function getApp(){
-  if(currentApp == 0)
+  if(currentApp == 0)  // Time app
     {
       getDateAndTime();
     }
-  else if(currentApp == 1)
+  else if(currentApp == 1) // Weather app
     {
       getWeather();
     }
-  if(currentApp != 5)
+  if(currentApp != 5) // If not youtube app
     {
-      document.getElementById('vids').style.display = 'none';
+      document.getElementById('winsorKnot').style.display = 'none';
+      //Insert more vids here
+      document.getElementById('vidButtons').style.display = 'none';
+      document.getElementById('backButton').style.display = 'none';
       document.getElementById('rTop').style.display = 'block';
       document.getElementById('rMiddle').style.display = 'block';
       document.getElementById('rBottom').style.display = 'block';
+      currentVid = 0;
     }
-  else
+  else if(currentVid == 0) // Default view to select youtube app
     {
-      document.getElementById('vids').style.display = 'block';
+      document.getElementById('winsorKnot').style.display = 'none';
+      //Insert more vids here
+      document.getElementById('vidButtons').style.display = 'block';
+      document.getElementById('backButton').style.display = 'none';
+      document.getElementById('rTop').style.display = 'none';
+      document.getElementById('rMiddle').style.display = 'none';
+      document.getElementById('rBottom').style.display = 'none';
+    }
+  else if(currentVid == 1) // Winsor knot youtube app
+    {
+      document.getElementById('winsorKnot').style.display = 'block';
+      //Insert more vids here
+      document.getElementById('vidButtons').style.display = 'none';
+      document.getElementById('backButton').style.display = 'block';
       document.getElementById('rTop').style.display = 'none';
       document.getElementById('rMiddle').style.display = 'none';
       document.getElementById('rBottom').style.display = 'none';
     }
 }
 
+// Gets the current weather -- NEEDS IMPLEMENTED
 function getWeather(){
   document.getElementById("tString").innerHTML = "Day";
   document.getElementById("mString").innerHTML = "32 F";
@@ -66,7 +89,8 @@ function getWeather(){
   document.getElementById('bButton6').style.visibility = 'hidden';
 }
 
-//Gets year, month, day, hour, minute, second, day of week, month as a word, timezone, and timezone offset
+// The current time factors and displays 
+// Day, year, month, date, hour, minute, second, timezone
 function getDateAndTime(){
   const date = new Date(); 
   var year = date.getFullYear();
@@ -76,11 +100,16 @@ function getDateAndTime(){
   var minute = date.getMinutes();
   var second = date.getSeconds();
   var dayOfWeekNum = date.getDay();
+  
+  // checks for changed timezone
   if(timezone != firsttimezone)
     {
       hour = hour + (firsttimezone - timezone) / 60;
     }
-  if(hour >= 23)  //23
+  
+  // Checks for late hour, used to make sure if time would reset to midnight and day would change, it actually works
+  // Same for extreme month cases (even leap year) and new year year change
+  if(hour >= 23)
     {
       hour = hour - 23;
       day = day + 1;
@@ -102,6 +131,8 @@ function getDateAndTime(){
   hour = getHour(hour);
   var dayOfWeek = getDayOfWeek(dayOfWeekNum);
   var monthWord = getMonth(month);
+  
+  // Displays the time as a 00:00:00 format
   if(minute < 10 && second < 10)
   {
       document.getElementById("mString").innerHTML = hour + ":0" + minute + ":0" + second;
@@ -129,7 +160,7 @@ function getDateAndTime(){
   document.getElementById('bButton6').style.visibility = 'visible';
 }
 
-//Returns the day of the week
+// Gets the day of the week as a word
 function getDayOfWeek(dayOfWeekNum)
 {
   var dayOfWeek;
@@ -150,10 +181,10 @@ function getDayOfWeek(dayOfWeekNum)
   return dayOfWeek;
 }
 
-//gets the hour, uses a 12 hour clock
+// Gets the current hour, uses a 12 hour clock
 function getHour(hour)
 {
-  var num = hour;
+  var num = hour + 1;
   if(hour > 12)
     num -= 12;
   else if(hour == 0)
@@ -194,7 +225,7 @@ function getMonth(month)
   return monthWord;
 }
 
-//Gets the time zone
+// Gets the time zone
 function getTimezone(timezone)
 {
   var tz = (0 - timezone)/60;
@@ -214,6 +245,7 @@ function getTimezone(timezone)
   return timezoneWord;
 }
 
+// Click selecting Hawaii time
 function hTime()
 {
   if(timezone != 600)
@@ -224,6 +256,7 @@ function hTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Click Selecting Alaskan time
 function aTime()
 {
   if(timezone != 540)
@@ -234,6 +267,7 @@ function aTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Click selecting pacific time
 function pTime()
 {
   if(timezone != 480)
@@ -244,6 +278,7 @@ function pTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Click selecting mountain time
 function mTime()
 {
   if(timezone != 420)
@@ -254,6 +289,7 @@ function mTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Click selecting central time
 function cTime()
 {
   if(timezone != 360)
@@ -264,6 +300,7 @@ function cTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Click Selecting eastern time
 function eTime()
 {
   if(timezone != 300)
@@ -274,6 +311,7 @@ function eTime()
   document.getElementById("bString").innerHTML ="Timezone: " + timezoneWord;
 }
 
+// Clicking the voice app
 function voiceClick()
 {
   currentApp = 4;
@@ -289,6 +327,7 @@ function voiceClick()
   recognition.start();
 }
 
+// Gets the voice activation result
 recognition.onresult = function(event) {
   var result = event.results[0][0].transcript;
   document.getElementById("mString").innerHTML = 'Result received: ' + result + '.';
@@ -312,16 +351,19 @@ recognition.onresult = function(event) {
    }
 }
 
+// Clicking the time app button
 function timeClick()
 {
   currentApp = 0;
 }
 
+// Clicking the weather button
 function weatherClick()
 {
   currentApp = 1;
 }
 
+// Clicking the daily quote button
 function QOTDClick()
 {
   currentApp = 2;
@@ -370,6 +412,7 @@ function QOTDClick()
   document.getElementById('bButton6').style.visibility = 'hidden';
 }
 
+// Click the youtube button
 function tubeClick()
 {
   currentApp = 5;
@@ -379,7 +422,14 @@ function tubeClick()
   document.getElementById('bButton4').style.visibility = 'hidden';
   document.getElementById('bButton5').style.visibility = 'hidden';
   document.getElementById('bButton6').style.visibility = 'hidden';
-  //document.getElementById("mString").innerHTML = '';
-  //document.getElementById("tString").innerHTML = '';
-  //document.getElementById("bString").innerHTML = '';
+}
+
+// Click the winsor youtube button
+function winsorClick(){
+  currentVid = 1;
+}
+
+// Click the back video button
+function backClick(){
+  currentVid = 0;
 }
