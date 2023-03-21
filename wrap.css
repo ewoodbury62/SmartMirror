@@ -50,6 +50,15 @@ body{
   font-size: 60px;
 }
 
+#vidButtons button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 400px;
+  margin: 10px 20px;
+  font-size: 60px;
+}
+
 .SmartMirror{
   font-size: 60px;
 }
