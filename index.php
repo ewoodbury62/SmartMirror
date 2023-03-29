@@ -12,7 +12,9 @@
       <button onclick="timeClick()">Time</button>
       <button onclick="weatherClick()">Weather</button>
       <button onclick="QOTDClick()">Daily Quote</button>
+	    <form method="post">
       <input type="submit" value="GO" name="GO">
+	  </form>
     </p>
     <p>
       <button onclick="voiceClick()">Voice Activation</button>
