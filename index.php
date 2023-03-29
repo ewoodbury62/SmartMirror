@@ -12,7 +12,7 @@
       <button onclick="timeClick()">Time</button>
       <button onclick="weatherClick()">Weather</button>
       <button onclick="QOTDClick()">Daily Quote</button>
-      <button>Camera</button>
+      <input type="submit" value="GO" name="GO">
     </p>
     <p>
       <button onclick="voiceClick()">Voice Activation</button>
@@ -66,3 +66,10 @@
   <script src="script.js"></script>
 </body>
 </html>
+<?php
+	if(isset($_POST['GO']))
+	{
+		shell_exec("python3 /home/admin/takePic.py");
+		echo"success";
+	}
+?>
