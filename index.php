@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <body>
   <link rel="stylesheet" type="text/css" href="wrap.css" />
   <div class="float-container">
@@ -63,3 +65,4 @@
   </div>
   <script src="script.js"></script>
 </body>
+</html>
