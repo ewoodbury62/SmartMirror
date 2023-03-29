@@ -8,7 +8,7 @@
     </h1>
     <p>
       <button onclick="timeClick()">Time</button>
-      <button onclick="weatherClick()">Weather</buttonon>
+      <button onclick="weatherClick()">Weather</button>
       <button onclick="QOTDClick()">Daily Quote</button>
       <button>Camera</button>
     </p>
@@ -31,7 +31,7 @@
         <div class = "vidButtons" id="vidButtons">
           <p>
             <button onClick="winsorClick()">Winsor Knot</button>
-            <button>Something</buttonon>
+            <button>Something</button>
           </p>
           <p>
             <button>Something</button>
