@@ -1,0 +1,64 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+} 
+
+#rBottom h1{
+  height: 30vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#rTop h1{
+  display: grid;
+  height: 20vh;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#rMiddle h1{
+  display: grid;
+  height: 30vh;
+  align-items: center;
+  justify-content: space-around;
+  font-size:150px;
+}
+
+#homePage button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 400px;
+  margin: 10px 20px;
+  font-size: 60px;
+}
+
+#vidButtons button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 400px;
+  margin: 10px 20px;
+  font-size: 60px;
+}
+
+.SmartMirror{
+  font-size: 60px;
+}
