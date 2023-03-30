@@ -71,7 +71,7 @@
 <?php
 	if(isset($_POST['GO']))
 	{
-		shell_exec("python3 /home/admin/takePic.py");
+		exec("/usr/bin/python3 /home/admin/takePic.py");
 		echo"success";
 	}
 ?>
