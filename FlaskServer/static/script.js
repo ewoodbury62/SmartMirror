@@ -37,11 +37,28 @@ setInterval(getApp, 100);
 function getApp(){
   if(currentApp == 0)  // Time app
     {
+      document.getElementById('rTop').style.display = 'block';
+      document.getElementById('rMiddle').style.display = 'block';
+      document.getElementById('rBottom').style.display = 'block';
       getDateAndTime();
     }
   else if(currentApp == 1) // Weather app
     {
+      document.getElementById('rTop').style.display = 'block';
+      document.getElementById('rMiddle').style.display = 'block';
+      document.getElementById('rBottom').style.display = 'block';
       getWeather();
+    }
+  if(currentApp != 3)
+    {
+      document.getElementById('cammeraStuff').style.display = 'none';
+    }
+  else
+    {
+      document.getElementById('cammeraStuff').style.display = 'block';
+      document.getElementById('rTop').style.display = 'none';
+      document.getElementById('rMiddle').style.display = 'none';
+      document.getElementById('rBottom').style.display = 'none';
     }
   if(currentApp != 5) // If not youtube app
     {
@@ -49,9 +66,6 @@ function getApp(){
       //Insert more vids here
       document.getElementById('vidButtons').style.display = 'none';
       document.getElementById('backButton').style.display = 'none';
-      document.getElementById('rTop').style.display = 'block';
-      document.getElementById('rMiddle').style.display = 'block';
-      document.getElementById('rBottom').style.display = 'block';
       currentVid = 0;
     }
   else if(currentVid == 0) // Default view to select youtube app
@@ -404,6 +418,17 @@ function QOTDClick()
       document.getElementById("mString").innerHTML = "Quote 7";
       document.getElementById("bString").innerHTML = "—Jim Rohn";
     }
+  document.getElementById('bButton1').style.visibility = 'hidden';
+  document.getElementById('bButton2').style.visibility = 'hidden';
+  document.getElementById('bButton3').style.visibility = 'hidden';
+  document.getElementById('bButton4').style.visibility = 'hidden';
+  document.getElementById('bButton5').style.visibility = 'hidden';
+  document.getElementById('bButton6').style.visibility = 'hidden';
+}
+
+function cameraClick()
+{
+  currentApp = 3;
   document.getElementById('bButton1').style.visibility = 'hidden';
   document.getElementById('bButton2').style.visibility = 'hidden';
   document.getElementById('bButton3').style.visibility = 'hidden';
