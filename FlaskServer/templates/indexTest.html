@@ -1,0 +1,203 @@
+<head><title>Test</title> 
+<meta charset=utf-8> </head>
+<body>
+  <link rel="stylesheet" href="{{url_for('static',filename='wrapTest.css')}}"/>
+  <div class="float-child" id="leftScreen">
+    <div id="appSelect">
+      <p class="btn_cont">
+        <button id="timeB"  onclick="timeClick()">Time</button>
+        <button id="weatherB" onclick="weatherClick()">Weather</button>
+        <button id="qotdB" onclick="QOTDClick()">Daily Quote</button>
+        <button id="voiceB" onclick="voiceClick()">Voice Activation</button>
+      </p>
+      <p class="btn_cont">
+        <button id="tutB" onclick="tutClick()">Tutorials</button>
+        <button id="camB" onclick="camClick()">Camera</button>
+        <button id="ledB" onclick="ledClick()">LED Control</button>
+	<button id="offB" onclick="offClick()">Display Off</button>
+      </p>
+    </div>
+    
+    <div id="voiceActButton">
+      <button id="voiceInB">Activate Voice</button>
+    </div>
+    
+    <div id="cameraButton">
+      <form>
+	<a href=# id=camSend>
+        <button id="camSendB">Take Pic (DO NOT CLICK RN)</button></a>
+      </form>
+    </div>
+    
+    <div id="ledButtons">
+      <p>
+        <form>
+	  <a href=# id=ledRed>
+            <button id="redLedB">RED</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledOrange>
+            <button id="orangeLedB">ORANGE</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledYellow>
+            <button id="yellowLedB">YELLOW</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledGreen>
+            <button id="greenLedB">GREEN</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledBlue>
+	    <button id="blueLedB">BLUE</button></a>
+	</form>
+	<form>
+	  <a href=# id=ledPurple>
+            <button id="purpleLedB">PURPLE</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledWhite>
+            <button id="whiteLedB">WHITE</button></a>
+        </form>
+	<form>
+	  <a href=# id=ledNone>
+            <button id="ledOffB">OFF</button></a>
+	</form>
+      </p>
+    </div>
+    
+    <div id="timeZoneButtons">
+      <p>
+        <button id="hB" onclick="hTime()">Hawaiian</button>
+        <button id="aB" onclick="aTime()">Alaskan</button>
+        <button id="pB" onclick="pTime()">Pacific</button>
+      </p>
+      <p>
+        <button id="mB" onclick="mTime()">Mountain</button>
+        <button id="cB" onclick="cTime()">Central</button>
+        <button id="eB" onclick="eTime()">Eastern</button>
+      </p>
+    </div>
+    
+    <div id="tutorialButtons">
+      <p>
+        <button id="windB" onclick="windsorClick()">Winsor</button>
+        <button>Something</button>
+      </p>
+      <p>
+        <button>Something</button>
+        <button>Something</button>
+      </p>
+    </div>
+    
+    <div id="backHomePage">
+      <button onclick="backHomeClick()">Back</button>
+    </div>
+  </div>
+  
+  
+  <div class="float-child" id="rightScreen">
+    <div id="rightMainLines">
+      <div class = "rTop" id="rTop">
+        <h1 id="tString"></h1>
+      </div>
+      <div class="rMiddle" id="rMiddle">
+        <h1 id="mString"></h1>
+      </div>
+      <div class = "rBottom" id = "rBottom">
+        <h1 id="bString"></h1>
+      </div>
+    </div>
+    
+    <div class = "winsorKnot" id = "winsorKnot" style="display:none;">
+      <iframe src="https://www.youtube.com/embed/xAg7z6u4NE8?modestbranding=1" width="560" height="315" frameborder="0"></iframe>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='scriptTest.js')}}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    $(function() {
+      $('a#ledRed').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_red_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledOrange').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_orange_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledYellow').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_yellow_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledGreen').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_green_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledPurple').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_purple_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledWhite').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_white_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledBlue').on('click', function(e) {
+        e.preventDefault()
+	$.getJSON('/led_blue_BG',
+	    function(data) {
+	     console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#ledNone').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/led_none_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+    $(function() {
+      $('a#camSend').on('click', function(e) {
+        e.preventDefault()
+        $.getJSON('/take_pic_BG',
+            function(data) {
+             console.log(data)
+        });
+      });
+    });
+</script>
+ 
+</body>
+
