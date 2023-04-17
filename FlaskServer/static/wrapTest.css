@@ -1,0 +1,192 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#rMiddle{
+  position:absolute;
+  top:300px;
+  left:2100px;
+}
+
+#timeB{
+  position:absolute;
+  top:80px;
+  left:40px;
+}
+
+#weatherB{
+  position:absolute;
+  top:80px;
+  left:520px;
+}
+
+#qotdB{
+  position:absolute;
+  top:80px;
+  left:1000px;
+}
+
+#voiceB{
+  position:absolute;
+  top:80px;
+  left:1480px;
+}
+
+#tutB{
+  position:absolute;
+  top:600px;
+  left:40px;
+}
+
+#camB{
+  position:absolute;
+  top:600px;
+  left:520px;
+}
+
+#ledB{
+  position:absolute;
+  top:600px;
+  left:1000px;
+}
+
+#offB{
+  position:absolute;
+  top:600px;
+  left:1480px;
+}
+
+#camSendB{
+  position:absolute;
+  top:200px;
+  left:560px;
+}
+
+#hB{
+  position:absolute;
+  top:80px;
+  left:120px;
+}
+
+#aB{
+  position:absolute;
+  top:80px;
+  left:760px;
+}
+
+#pB{
+  position:absolute;
+  top:80px;
+  left:1400px;
+}
+
+#mB{
+  position:absolute;
+  top:400px;
+  left:120px;
+}
+
+#cB{
+  position:absolute;
+  top:400px;
+  left:760px;
+}
+
+#eB{
+  position:absolute;
+  top:400px;
+  left:1400px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+.btn_cont {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#cameraButton button{
+  background-color: white;
+  width:800px;
+  height:400px;
+  font-size: 60px;
+  border-radius:15px;
+}
+
+#appSelect button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 400px;
+  margin: 10px 20px;
+  font-size: 60px;
+  border-radius:12px;
+}
+
+#backHomePage button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 1800px;
+  height: 200px;
+  margin: 10px 20px;
+  font-size: 60px;
+  position:absolute;
+  top:800px;
+}
+
+#voiceActButton button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 800px;
+  height: 100px;
+  margin: 10px 20px;
+  font-size: 60px;
+}
+
+#timeZoneButtons button{
+  background-color: white;
+  border: 1px solid gray;
+  width: 400px;
+  height: 200px;
+  margin: 10px 20px;
+  font-size: 60px;
+}
+
+#rBottom h1{
+  height: 30vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#rTop h1{
+  display: grid;
+  height: 20vh;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+#rMiddle h1{
+  display: grid;
+  height: 30vh;
+  align-items: center;
+  justify-content: space-around;
+  font-size:150px;
+}
+
